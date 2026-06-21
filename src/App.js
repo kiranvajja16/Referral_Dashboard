@@ -15,7 +15,7 @@ function App() {
     <Route path='/login' element={<Login/>} /> 
     <Route path='/' element={<ProtectedRoute child={<Dashboard/>} />} />
     <Route path='/referral/:id' element={<ProtectedRoute child={<ReferralDetails/>} />} />
-    <Route path="*" element={<ProtectedRoute child={<NotFound/>} />} />
+    <Route path="*" element={<NotFound/>} />
   </Routes>
 </Router> 
   );

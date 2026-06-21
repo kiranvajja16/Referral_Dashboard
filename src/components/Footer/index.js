@@ -3,9 +3,11 @@ import "./index.css"
 const Footer = () =>(
     <footer className="footer">
         <div className="footer-content">
-            <h3 className="footer-logo">
+            <div className="footer-logo">
+                <a href="/">
                 Go Bussiness
-            </h3>
+                </a>
+            </div>
 
             <div className="footer-links">
                 <a href="/">About</a>

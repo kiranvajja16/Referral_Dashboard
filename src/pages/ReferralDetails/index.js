@@ -101,7 +101,7 @@ const ReferralDetails=()=>{
                         </p>
                         <h3>{referral.date}</h3>
                     </div>
-                    <div className="detail-item">
+                    <div className="details-item">
                         <p className="detail-label">Profit</p>
                         <h3>
                          {new Intl.NumberFormat('en-US', {
