@@ -10,7 +10,7 @@ const Overview = props =>{
             <div className="metrics-container">
                 {metrics.map(each=>(
                     <div key={each.id} className="metric-card">
-                        <h3>{each.title}</h3>
+                        <h3>{each.value}</h3>
                         <p>{each.label}</p>
                     </div>
                 ))}

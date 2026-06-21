@@ -3,7 +3,7 @@ import Cookies from 'js-cookie'
 
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
-import Overview from '../../componenets/Overview'
+import Overview from '../../components/Overview'
 
 import './index.css'
 
