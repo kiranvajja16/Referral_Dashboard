@@ -85,13 +85,13 @@ const totalPages = Math.ceil(referrals.length / itemsPerPage)
                     Track you referrals ,earnings and partner activity in on place.
                 </p>
             </div>
-        <Overview metrics={metrics} />
-        <ServiceSummary serviceSummary={serviceSummary} />
-         <ReferralShare referral={referral} />
-        <div className="table-card">
-  <h2>All referrals</h2>
+            <Overview metrics={metrics} />
+            <ServiceSummary serviceSummary={serviceSummary} />
+             <ReferralShare referral={referral} />
+            <div className="table-card">
+  <h2 className="table-heading">All referrals</h2>
 
-  <div className="table-controls">
+  <div className="referrals-controls-container">
     <input
       type="search"
       placeholder="Name or service..."
@@ -100,7 +100,7 @@ const totalPages = Math.ceil(referrals.length / itemsPerPage)
         setSearchInput(event.target.value)
         setCurrentPage(1)
       }}
-      className="search-input"
+      className="referrals-search-input"
     />
 
     <select
@@ -109,7 +109,7 @@ const totalPages = Math.ceil(referrals.length / itemsPerPage)
         setSortOrder(event.target.value)
         setCurrentPage(1)
       }}
-      className="sort-select"
+      className="referrals-sort-select"
     >
       <option value="desc">Newest first</option>
       <option value="asc">Oldest first</option>
@@ -118,21 +118,23 @@ const totalPages = Math.ceil(referrals.length / itemsPerPage)
 
   <ReferralTable referrals={currentReferrals} />
 
-  <div className="pagination-container">
+  <div className="pagination-controls-container">
     <button
       type="button"
+      className="pagination-button"
       disabled={currentPage === 1}
       onClick={() => setCurrentPage(currentPage - 1)}
     >
       Previous
     </button>
 
-    <span>
+    <span className="pagination-text">
       Page {currentPage} of {totalPages}
     </span>
 
     <button
       type="button"
+      className="pagination-button"
       disabled={currentPage === totalPages}
       onClick={() => setCurrentPage(currentPage + 1)}
     >
