@@ -4,6 +4,7 @@ import Cookies from 'js-cookie'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import Overview from '../../components/Overview'
+import ServiceSummary from '../../components/ServiceSummary'
 
 import './index.css'
 
@@ -75,10 +76,7 @@ const Dashboard = () =>{
             </div>
         <Overview metrics={metrics} />
 
-        <section className="card-section">
-          <h2>Service summary</h2>
-          <pre>{JSON.stringify(serviceSummary, null, 2)}</pre>
-        </section>
+        <ServiceSummary serviceSummary={serviceSummary} />
          <section className="card-section">
           <h2>Refer friends and earn more</h2>
 
