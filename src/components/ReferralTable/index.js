@@ -1,7 +1,10 @@
+import {useNavigate} from 'react-router-dom'
+
 import './index.css'
 
 const ReferralTable = props => {
   const {referrals} = props
+  const navigate = useNavigate()
 
   return (
     <table className="referral-table">
@@ -15,8 +18,18 @@ const ReferralTable = props => {
       </thead>
 
       <tbody>
-        {referrals.map(each => (
-          <tr key={each.id}>
+        {referrals.map(each => {
+          console.log(each)
+          return (
+          <tr
+            key={each.id}
+            className="table-row"
+            onClick={() =>
+               navigate(`/referral/${each.id}`, {
+              state: {referral: each},
+            })
+         }
+>
             <td>{each.name}</td>
             <td>{each.serviceName}</td>
             <td>{each.date}</td>
@@ -28,7 +41,7 @@ const ReferralTable = props => {
               }).format(each.profit)}
             </td>
           </tr>
-        ))}
+        )})}
       </tbody>
     </table>
   )
