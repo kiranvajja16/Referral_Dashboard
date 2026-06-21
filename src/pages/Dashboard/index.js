@@ -1,8 +1,9 @@
 import {useEffect,useState} from 'react'
 import Cookies from 'js-cookie'
 
-import Navbar from '../../components/Navbar';
-import Footer from '../../components/Footer';
+import Navbar from '../../components/Navbar'
+import Footer from '../../components/Footer'
+import Overview from '../../componenets/Overview'
 
 import './index.css'
 
@@ -72,10 +73,7 @@ const Dashboard = () =>{
                     Track you referrals ,earnings and partner activity in on place.
                 </p>
             </div>
-             <section className="card-section">
-          <h2>Overview</h2>
-          <pre>{JSON.stringify(metrics, null, 2)}</pre>
-        </section>
+        <Overview metrics={metrics} />
 
         <section className="card-section">
           <h2>Service summary</h2>
