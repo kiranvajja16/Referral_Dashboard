@@ -5,6 +5,7 @@ import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import Overview from '../../components/Overview'
 import ServiceSummary from '../../components/ServiceSummary'
+import ReferralShare from '../../components/ReferralShare'
 
 import './index.css'
 
@@ -75,19 +76,8 @@ const Dashboard = () =>{
                 </p>
             </div>
         <Overview metrics={metrics} />
-
         <ServiceSummary serviceSummary={serviceSummary} />
-         <section className="card-section">
-          <h2>Refer friends and earn more</h2>
-
-          <p>
-            <strong>Referral Link:</strong> {referral?.link}
-          </p>
-
-          <p>
-            <strong>Referral Code:</strong> {referral?.code}
-          </p>
-        </section>
+         <ReferralShare referral={referral} />
         <section className="card-section">
           <h2>All referrals</h2>
 
