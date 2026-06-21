@@ -11,7 +11,10 @@ import ReferralTable from '../../components/ReferralTable'
 import './index.css'
 
 const Dashboard = () =>{
-
+    const [searchInput,setSearchInput]=useState('')
+    const [sortOrder,setSortOrder]=useState('desc')
+    const [currentPage,setCurrentPage]=useState(1)
+    const itemsPerPage=10
     const [dashboardData,setDashboardData]=useState(null)
     const [isLoading,setIsLoading]=useState(true)
     const [error,setError]=useState('')
@@ -19,7 +22,7 @@ const Dashboard = () =>{
     useEffect(()=>{
         const getDashboardData=async()=>{
             const token=Cookies.get('jwt_token')
-            const url='https://v9fes04dwf.execute-api.eu-north-1.amazonaws.com/api/referrals'
+            const url = `https://v9fes04dwf.execute-api.eu-north-1.amazonaws.com/api/referrals?search=${searchInput}&sort=${sortOrder}`
             const options={
                 method:'GET',
                 headers:{
@@ -43,7 +46,7 @@ const Dashboard = () =>{
             setIsLoading(false)
         }
         getDashboardData()
-    },[])
+    },[searchInput,sortOrder])
 
     const renderContent=()=>{
         if(isLoading){
@@ -65,6 +68,12 @@ const Dashboard = () =>{
         return <p>No data available</p>
         }
         const {metrics,serviceSummary,referral,referrals}=dashboardData
+        const startIndex = (currentPage - 1) * itemsPerPage
+const endIndex = startIndex + itemsPerPage
+
+const currentReferrals = referrals.slice(startIndex, endIndex)
+
+const totalPages = Math.ceil(referrals.length / itemsPerPage)
 
         return (
             <>
@@ -79,7 +88,58 @@ const Dashboard = () =>{
         <Overview metrics={metrics} />
         <ServiceSummary serviceSummary={serviceSummary} />
          <ReferralShare referral={referral} />
-        <ReferralTable referrals={referrals} />
+        <div className="table-card">
+  <h2>All referrals</h2>
+
+  <div className="table-controls">
+    <input
+      type="search"
+      placeholder="Name or service..."
+      value={searchInput}
+      onChange={event => {
+        setSearchInput(event.target.value)
+        setCurrentPage(1)
+      }}
+      className="search-input"
+    />
+
+    <select
+      value={sortOrder}
+      onChange={event => {
+        setSortOrder(event.target.value)
+        setCurrentPage(1)
+      }}
+      className="sort-select"
+    >
+      <option value="desc">Newest first</option>
+      <option value="asc">Oldest first</option>
+    </select>
+  </div>
+
+  <ReferralTable referrals={currentReferrals} />
+
+  <div className="pagination-container">
+    <button
+      type="button"
+      disabled={currentPage === 1}
+      onClick={() => setCurrentPage(currentPage - 1)}
+    >
+      Previous
+    </button>
+
+    <span>
+      Page {currentPage} of {totalPages}
+    </span>
+
+    <button
+      type="button"
+      disabled={currentPage === totalPages}
+      onClick={() => setCurrentPage(currentPage + 1)}
+    >
+      Next
+    </button>
+  </div>
+</div>
             </>
         )
 
