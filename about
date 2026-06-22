@@ -1,0 +1,12 @@
+A React.js-based Referral Dashboard application with JWT authentication, protected routing, referral analytics, search, sorting, pagination, and referral details management. Built using React Hooks, React Router, REST APIs, and reusable components.
+
+
+Technologies Used
+React.js
+JavaScript (ES6+)
+React Router DOM
+CSS3
+REST APIs
+JWT Authentication
+js-cookie
+Git & GitHub
